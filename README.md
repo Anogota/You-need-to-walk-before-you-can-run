@@ -118,4 +118,24 @@ First we need to download by command: get allowed.userlist and also i recommend 
 
 ![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/630e2de2-7f3a-4bd4-95b6-09cd46e80717)
 
- 7.What version of Apache HTTP Server is running on the target host? 
+7.What version of Apache HTTP Server is running on the target host? 
+We can take this from the scan what we do in secend task. Apache httpd 2.4.41
+
+8.What switch can we use with Gobuster to specify we are looking for specific filetypes? 
+use gobuster dir -h, there u can find answer for the question.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/6338b986-12bd-4785-a142-54b01b8bdae4)
+
+9. Which PHP file can we identify with directory brute force that will provide the opportunity to authenticate to the web service? 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/4ec7df6e-155c-4ae5-9ba1-e5042b2da26b)
+
+10. Submit root flag
+Now we need to go on login.php and i hope you rember, i download from ftp password, let's take a look 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/19cc65d3-6dd3-44fb-8263-2226a5839437)
+
+That how can see, we got 4 password now we need to test it, and log in as admin, the last password is working: rKXM59ESxesUFHAd
+And we got the flag.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/764a8606-0108-4857-87e2-d75578fe0759)
