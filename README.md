@@ -139,3 +139,33 @@ That how can see, we got 4 password now we need to test it, and log in as admin,
 And we got the flag.
 
 ![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/764a8606-0108-4857-87e2-d75578fe0759)
+
+
+The next lab is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/38f94aa6-3af0-4f09-b170-11acae324314)
+
+1.When visiting the web service using the IP address, what is the domain that we are being redirected to? 
+First what we need to do is visit the website, there we can see this:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e15f4d8d-2c3a-43bc-901d-5bba4e063738)
+
+2. Which scripting language is being used on the server to generate webpages? 
+If you insert in /etc/hosts this domain, we need to check this with some tool, i recommend use wapalyzer, we can see the language used the server
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/1c58282d-1726-4147-bd33-598bc10527bc)
+
+3. What is the name of the URL parameter which is used to load different language versions of the webpage? 
+In the right corner we see button to change language, if we change from EN to DE we need to look on URL, there we can see some changes
+The answer is page
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/2669cd3e-2be5-4c7d-94a4-499a00e8cb42)
+
+4.Which of the following values for the `page` parameter would be an example of exploiting a Local File Include (LFI) vulnerability: "french.html", "//10.10.14.6/somefile", "../../../../../../../../windows/system32/drivers/etc/hosts", "minikatz.exe" 
+
+The answer is ../../../../../../../../windows/system32/drivers/etc/hosts, because LFI work's like changing the directory in terminal.
+
+5. Which of the following values for the `page` parameter would be an example of exploiting a Remote File Include (RFI) vulnerability: "french.html", "//10.10.14.6/somefile", "../../../../../../../../windows/system32/drivers/etc/hosts", "minikatz.exe" 
+
+The answer is //10.10.14.6/somefile
+(RFI), an attacker can cause the web application to include a remote file
