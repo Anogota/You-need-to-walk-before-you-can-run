@@ -202,3 +202,8 @@ i found something intresting check this out
 11. Submit root flag 
 We need to search something about this port i always reccomend check on the hacktricks, on this website is everything
 I found how to login into this port.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/074c8ffe-12a9-4fa3-a613-b0b99625cc56)
+
+But we need to change from -H to -p beacause we know the password, then we have access, in folder mike we can find flag.txt
+ea81b7afddd03efaa0945333ed147fac 
