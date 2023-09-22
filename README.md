@@ -235,3 +235,40 @@ This how you can do with gobuster: gobuster dns -w /usr/share/wordlists/seclists
 and i found this: ![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/c2b96589-d442-4d40-b948-473e716c7251)
 
 5. Which service is running on the discovered sub-domain? 
+We to google it, try to find something about s3, then you can find this, and also this is a answer for question:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/60938837-bcfc-44bc-9a5e-bd1bf4f114d4)
+
+6.Which command line utility can be used to interact with the service running on the discovered sub-domain? 
+Also this we need to google, beacause i have no idea what kind of tools can help to connect into s3 amazon
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/99bf36b4-c047-41ce-baa5-0f8b0de8f48e)
+
+also here you can find everything about s3, docs amazon:https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+7. Which command is used to set up the AWS CLI installation? 
+In the amazon docs you can find everything, here is the command is used to set up the AWS CLI
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/0041de23-51c0-4da1-affb-ec0d2f99e313)
+
+8. What is the command used by the above utility to list all of the S3 buckets?
+Also again in docs i found the answer for the question :P, i realy recommend everyone read the docs, there you can find everything.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/71533be9-f639-4a2b-a10b-fff4dd7267ab)
+
+9. This server is configured to run files written in what web scripting language? 
+The server is running on PHP
+
+10. Submit root flag 
+First what i recommend is do some recon on aws.
+With this command u can list all file on the aws: aws s3 ls --endpoint=http://s3.thetoppers.htb/ s3://thetoppers.htb
+But i can't find anything intrestting on aws
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/dab8d7ae-e5ac-44ab-8301-142e51a78986)
+
+you can do RCE by firt you need to cp the reverse-shell and change the ip, than run nc -lvnp 1234
+Then use this command to copy this reverse-shell into s3
+
+And there you can find ur flag: a980d99281a28d638ac68b9bf9453c2b
+
+We got this :D
