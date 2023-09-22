@@ -207,3 +207,31 @@ I found how to login into this port.
 
 But we need to change from -H to -p beacause we know the password, then we have access, in folder mike we can find flag.txt
 ea81b7afddd03efaa0945333ed147fac 
+
+The next lab is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/c19dbc5d-fa08-4c29-a333-8b2dcf7b189a)
+
+1. How many TCP ports are open? 
+First we need to do a scan, to know what's running on the server, i found only two standard port, one is SSH and the secend is HTTP
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/3862344a-74be-4747-af16-e1405e7864a3)
+
+2.What is the domain of the email address provided in the "Contact" section of the website? 
+First we need to add in /etc/hosts the domain s3.thetoppers.htb and thetoppers.htb, then let's visit the website and do some recon, what's going on the website. I found quickly the e-mail, here it is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/79fdfec4-26e9-4b13-9f64-233c0293c40a)
+
+3. In the absence of a DNS server, which Linux file can we use to resolve hostnames to IP addresses in order to be able to access the websites that point to those hostnames? 
+That's how i show you in the previouse task how to add the domain, we need to run /etc/hosts as root here is the command: sudo nano /etc/hosts, then add the subdomain.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/d4ac3592-dbd8-4bd1-b816-e896ac3e6f03)
+
+4. Which sub-domain is discovered during further enumeration? 
+I know 3 tools, with this tool you can discover subdomain, sublist3r,ffuf and gobuster dns, i will show with ffuf and gobuster
+This how you can do with ffuf: ffuf -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-20000.txt -u https://thetoppers.htb/ -H "Host: FUZZ.thetoppers.htb"
+This how you can do with gobuster: gobuster dns -w /usr/share/wordlists/seclists/Discovery/DNS/subdomains-top1million-5000.txt -d thetoppers.htb
+
+and i found this: ![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/c2b96589-d442-4d40-b948-473e716c7251)
+
+5. Which service is running on the discovered sub-domain? 
