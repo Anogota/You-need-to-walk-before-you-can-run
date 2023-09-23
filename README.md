@@ -1,4 +1,4 @@
-![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/0d4f3e90-e89c-4413-8d9f-cdeb24153535)![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
 
 1. What does the acronym SQL stand for?
 We need to check it in google, i don't rember the acronym SQL, i found this 
@@ -272,3 +272,39 @@ Then use this command to copy this reverse-shell into s3
 And there you can find ur flag: a980d99281a28d638ac68b9bf9453c2b
 
 We got this :D
+
+The next lab is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/fabb9c7d-982c-484c-b26a-904ac2bd3eef)
+
+1. Which service version is found to be running on port 80? 
+We need to turn on the nmap and what's running on the server. Now we know what's running on the port 80, this is a ngix, and i also found domain:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/2adba588-3554-4c44-896a-93ce5ce668ab)
+
+2.What is the 3-digit HTTP status code returned when you visit http://{machine IP}/? 
+We need to use curl to get a HTTP status code.
+This what i found by command curl -v
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/57e3d421-04d1-4e18-bfe3-e91a1ba18a6f)
+
+3. What is the virtual host name the webpage expects to be accessed by?  
+From the previouse scan we can find the domain: ignition.htb, insert this domain in /etc/hosts, by rember to run this u need to have rights root here's the command: sudo nano /etc/hosts
+
+4. What is the full path to the file on a Linux computer that holds a local list of domain name to IP address pairs? 
+You can find the answer in the previouse task, /etc/hosts
+
+5.Use a tool to brute force directories on the webserver. What is the full URL to the Magento login page? 
+Let's go to do some recon with the help of ffuf, ffuf -w /usr/share/wordlist/dirb/common.txt -u http://ignition.htb/FUZZ
+This what i found, there is something intresting /admin, and also this is a answer for our question 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/a567d124-bf97-4fe3-85f3-76833e921d05)
+
+6. Look up the password requirements for Magento and also try searching for the most commong passwords of 2023. Which password provides access to the admin account? 
+I found the website with 30 most common passwords of 2023, and there we can find the password to login panel, qwerty123 
+https://www.beckershospitalreview.com/cybersecurity/30-most-common-passwords-of-2023.html and we got into admin panel
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/30c97d6f-45fd-47e9-b15e-80ba1a466465)
+
+And also there we can find the flag :D
+We got this uhu :D
