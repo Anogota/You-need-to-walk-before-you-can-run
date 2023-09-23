@@ -1,4 +1,4 @@
-![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/323fcf13-a590-4eaf-87da-fba13a4054a6)![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/8ccfeabd-6654-4e8a-89f4-c3393769a709)
 
 1. What does the acronym SQL stand for?
 We need to check it in google, i don't rember the acronym SQL, i found this 
